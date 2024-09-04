@@ -8,6 +8,8 @@ Projeto documentado pelo Swagger.
 
 Utilizei o ModelMapper para fazer o parse da entity Task e o Value Object TaskVO.
 
+Adicionei duas migrations no projeto para facilitar os testes.
+
 Também utilizei o Mockito para testes unitários.
 
 ## Iniciar o projeto
@@ -59,6 +61,8 @@ java -jar target/desafio-todolist-0.0.1-SNAPSHOT.jar
 [ModelMapper](https://modelmapper.org/)
 
 [MySQL](https://www.mysql.com/)
+
+[Flyway](https://documentation.red-gate.com/flyway/flyway-cli-and-api/supported-databases/mysql)
 
 [Mockito](https://site.mockito.org/)
 

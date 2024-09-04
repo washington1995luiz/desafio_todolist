@@ -24,7 +24,7 @@ public class Task implements Serializable{
     @Column(nullable = false, length = 80)
     private String name;
 
-    @Column(nullable = false, length = 80)
+    @Column(nullable = false, length = 180)
     private String description;
 
     @Column(nullable = false, length = 80)
