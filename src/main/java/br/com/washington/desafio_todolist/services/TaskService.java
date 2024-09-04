@@ -34,10 +34,14 @@ public class TaskService {
     }
 
     public List<TaskVO> findAll(){
-        Sort sort = Sort.by(Direction.ASC, "status").and(Sort.by(Direction.ASC, "priority"));
-        var vo = Mapper.parseListObject(repository.findAll(sort), TaskVO.class);
-        vo.forEach(b -> b.add(linkTo(methodOn(TaskController.class).findById(b.getKey())).withSelfRel()));
-        return vo;
+        try{
+            Sort sort = Sort.by(Direction.ASC, "status").and(Sort.by(Direction.ASC, "priority"));
+            var vo = Mapper.parseListObject(repository.findAll(sort), TaskVO.class);
+            vo.forEach(b -> b.add(linkTo(methodOn(TaskController.class).findById(b.getKey())).withSelfRel()));
+            return vo;
+        } catch (Exception ex){
+            throw new ResourceNotFoundException(MessagesException.NO_RECORDS_FOUND_IN_DATABASE);
+        }
     }
 
     public TaskVO create(TaskVO data){

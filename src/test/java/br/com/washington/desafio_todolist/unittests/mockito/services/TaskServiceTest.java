@@ -15,6 +15,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 
 import java.util.List;
 import java.util.Optional;
@@ -60,7 +62,8 @@ class TaskServiceTest {
     @Test
     void findAll() {
         List<Task> list = input.mockEntityList();
-        when(repository.findAll()).thenReturn(list);
+        Sort sort = Sort.by(Direction.ASC, "status").and(Sort.by(Direction.ASC, "priority"));
+        when(repository.findAll(sort)).thenReturn(list);
         var task = service.findAll();
 
         assertEquals(20, task.size());

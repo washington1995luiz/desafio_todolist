@@ -1,5 +1,5 @@
 INSERT INTO `tasks` (`id`, `name`, `description`, `status`, `priority`) VALUES
-(1, 'Revisar for loop', 'enter como for loop funciona', 1, 1),
+(1, 'Revisar for loop', 'enter como for loop funciona', 1, 5),
 (2, 'Lembrar de tomar vitamina', 'Tomar vitamina para melhorar a saúde', 0, 3),
 (3, 'Visitar os avós', 'Lembrar de visitar os avós quando sair do trabalho', 1, 1),
 (4, 'Ler um livro', 'Dar sequência ao livro Dom Casmurro', 0, 5),
