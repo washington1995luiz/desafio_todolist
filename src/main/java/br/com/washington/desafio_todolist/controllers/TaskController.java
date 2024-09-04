@@ -32,7 +32,7 @@ public class TaskController {
     TaskService service;
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON)
-    @Operation(summary = "Procura uma tarefa criadas", description = "Procura uma tarefa criadas", tags = "Tarefas",
+    @Operation(summary = "Procura uma tarefa por id", description = "Procura uma tarefa por id", tags = "Tarefas",
             responses = {
                 @ApiResponse(description = "success", responseCode = "200", content = {
             @Content(
@@ -50,7 +50,9 @@ public class TaskController {
     }
 
     @GetMapping(value = "/", produces = MediaType.APPLICATION_JSON)
-    @Operation(summary = "Procura todas uma tarefa por id", description = "Procura todas uma tarefa por id", tags = "Tarefas",
+    @Operation(summary = "Lista todas tarefas em ordem",
+            description = "Ordenado por:\n1) Realizado: falso \n2) Prioridade: ordem ascendente de 1 a 5\n3) Maior prioridade: 1 \n4) Menor prioridade: 5",
+            tags = "Tarefas",
             responses = {
                 @ApiResponse(description = "Success", responseCode = "200", content = @Content(schema = @Schema(implementation = TaskVO.class))),
                 @ApiResponse(description = "No Content", responseCode = "204", content = @Content),

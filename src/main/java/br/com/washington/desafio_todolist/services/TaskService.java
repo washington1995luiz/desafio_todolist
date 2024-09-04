@@ -5,6 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import br.com.washington.desafio_todolist.controllers.TaskController;
@@ -31,7 +34,8 @@ public class TaskService {
     }
 
     public List<TaskVO> findAll(){
-        var vo = Mapper.parseListObject(repository.findAll(), TaskVO.class);
+        Sort sort = Sort.by(Direction.ASC, "status").and(Sort.by(Direction.ASC, "priority"));
+        var vo = Mapper.parseListObject(repository.findAll(sort), TaskVO.class);
         vo.forEach(b -> b.add(linkTo(methodOn(TaskController.class).findById(b.getKey())).withSelfRel()));
         return vo;
     }
