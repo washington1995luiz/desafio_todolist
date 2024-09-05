@@ -34,11 +34,7 @@ public class TaskController {
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON)
     @Operation(summary = "Procura uma tarefa por id", description = "Procura uma tarefa por id", tags = "Tarefas",
             responses = {
-                @ApiResponse(description = "success", responseCode = "200", content = {
-            @Content(
-                    mediaType = MediaType.APPLICATION_JSON,
-                    array = @ArraySchema(schema = @Schema(implementation = TaskVO.class))
-            )}),
+                @ApiResponse(description = "success", responseCode = "200", content = @Content(schema = @Schema(implementation = TaskVO.class))),
                 @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
                 @ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content),
                 @ApiResponse(description = "Not Found", responseCode = "404", content = @Content),
@@ -54,7 +50,11 @@ public class TaskController {
             description = "Ordenado por:\n1) Realizado: falso \n2) Prioridade: ordem ascendente de 1 a 5\n3) Maior prioridade: 1 \n4) Menor prioridade: 5",
             tags = "Tarefas",
             responses = {
-                @ApiResponse(description = "Success", responseCode = "200", content = @Content(schema = @Schema(implementation = TaskVO.class))),
+                @ApiResponse(description = "Success", responseCode = "200", content = {
+                        @Content(
+                                mediaType = MediaType.APPLICATION_JSON,
+                                array = @ArraySchema(schema = @Schema(implementation = TaskVO.class))
+                        )}),
                 @ApiResponse(description = "No Content", responseCode = "204", content = @Content),
                 @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
                 @ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content),
